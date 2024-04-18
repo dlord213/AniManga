@@ -26,7 +26,8 @@ export default function TabLayout() {
           screenOptions={{
             tabBarActiveTintColor: "white",
             tabBarInactiveTintColor: "#646464",
-            tabBarInactiveBackgroundColor: "#F1F1F1",
+            tabBarInactiveBackgroundColor:
+              colorScheme === "dark" ? "#020617" : "#F1F1F1",
             tabBarActiveBackgroundColor:
               colorScheme === "dark" ? "#020617" : currentAccentColor.hex,
             tabBarLabelStyle: { fontFamily: "WorkSans_500Medium" },
@@ -34,8 +35,9 @@ export default function TabLayout() {
               position: "absolute",
               shadowOpacity: 0,
               overflow: "hidden",
-              borderTopLeftRadius: 24,
-              borderTopRightRadius: 24,
+              margin: 8,
+              borderRadius: 8,
+              elevation: 0,
               backgroundColor: colorScheme === "dark" ? "#020617" : "white",
               borderColor: colorScheme === "dark" ? "#020617" : "white",
             },

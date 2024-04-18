@@ -16,8 +16,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import LibraryStorage from "../library_storage/library_storage";
 import { Link } from "expo-router";
 
-
-
 function MangaComponent(props) {
   return (
     <Link
@@ -70,8 +68,11 @@ export default function Page() {
       setLibraryData(ret);
       setIsLibraryLoaded(true);
     } catch (error) {
-      console.error("Error loading library data:", error);
-      ToastAndroid.show("Error loading library data.", ToastAndroid.SHORT);
+      ToastAndroid.show(
+        "No library storage found, creating new one...",
+        ToastAndroid.SHORT
+      );
+      LibraryStorage.save({ key: "library", data: [] });
       setIsLibraryLoaded(true);
     }
   }, []);

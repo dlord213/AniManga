@@ -81,11 +81,12 @@ function SearchComponent(props) {
   return (
     <View className="flex flex-row items-center gap-2 mb-2">
       <TextInput
-        className="rounded-md border p-2 dark:text-white text-[#484848] flex-1"
+        className="rounded-md border p-2 flex-1"
         cursorColor={colorScheme === "dark" ? "white" : colorContext[0].hex}
         style={{
           borderColor: colorScheme === "dark" ? "white" : colorContext[0].hex,
           fontFamily: "WorkSans_400Regular",
+          color: colorScheme === "dark" ? "white" : "#484848",
         }}
         placeholder="Search"
         placeholderTextColor={colorScheme === "dark" ? "white" : "#969696"}

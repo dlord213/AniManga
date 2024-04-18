@@ -141,16 +141,23 @@ function AboutMangaComponent(props) {
           <>
             <Pressable
               className="p-2 flex flex-1 flex-row mr-1 justify-center items-center rounded-lg"
-              style={{ backgroundColor: colorContext[0].hex }}
+              style={{
+                backgroundColor:
+                  colorScheme === "dark" ? "white" : colorContext[0].hex,
+              }}
               onPress={() => {
                 ToastAndroid.show("Removed from library.", ToastAndroid.SHORT);
                 removeFromLibrary(props.mangaTitle);
                 setIsInLibrary(false);
               }}
             >
-              <AntDesign name="heart" size={16} color="white" />
+              <AntDesign
+                name="heart"
+                size={16}
+                color={colorScheme === "dark" ? "#242424" : "white"}
+              />
               <Text
-                className="dark:text-[#484848] text-white mx-2"
+                className="text-white dark:text-slate-950 mx-2"
                 style={{ fontFamily: "WorkSans_700Bold" }}
               >
                 Remove
@@ -161,7 +168,10 @@ function AboutMangaComponent(props) {
           <>
             <Pressable
               className="p-2 flex flex-1 flex-row mr-1 justify-center items-center rounded-lg"
-              style={{ backgroundColor: colorContext[0].hex }}
+              style={{
+                backgroundColor:
+                  colorScheme === "dark" ? "white" : colorContext[0].hex,
+              }}
               onPress={() => {
                 ToastAndroid.show("Added to library.", ToastAndroid.SHORT);
                 saveToLibrary({
@@ -173,9 +183,13 @@ function AboutMangaComponent(props) {
                 setIsInLibrary(true);
               }}
             >
-              <AntDesign name="hearto" size={16} color="white" />
+              <AntDesign
+                name="hearto"
+                size={16}
+                color={colorScheme === "dark" ? "#242424" : "white"}
+              />
               <Text
-                className="dark:text-[#484848] text-white mx-2"
+                className="text-white dark:text-slate-950 mx-2"
                 style={{ fontFamily: "WorkSans_700Bold" }}
               >
                 Add
@@ -186,11 +200,18 @@ function AboutMangaComponent(props) {
         <Link href={props.link} asChild>
           <Pressable
             className="p-2 flex flex-1 flex-row ml-1 justify-center items-center rounded-lg"
-            style={{ backgroundColor: colorContext[0].hex }}
+            style={{
+              backgroundColor:
+                colorScheme === "dark" ? "white" : colorContext[0].hex,
+            }}
           >
-            <MaterialCommunityIcons name="web" size={16} color="white" />
+            <MaterialCommunityIcons
+              name="web"
+              size={16}
+              color={colorScheme === "dark" ? "#242424" : "white"}
+            />
             <Text
-              className="dark:text-[#484848] text-white mx-2"
+              className=" text-white dark:text-slate-950 mx-2"
               style={{ fontFamily: "WorkSans_700Bold" }}
             >
               WebView
@@ -212,7 +233,7 @@ function AboutMangaComponent(props) {
         <View
           className={
             "absolute flex flex-row justify-between items-center bottom-0 w-full z-10 rounded-lg p-4 " +
-            (isExpanded ? "bg-[#0F172A50]" : "bg-[#0F172AEF]")
+            (isExpanded ? "bg-[#0F172A10]" : "bg-[#0F172AEF]")
           }
         >
           {isExpanded ? (
@@ -223,7 +244,10 @@ function AboutMangaComponent(props) {
 
           <Text
             className="text-white text-center"
-            style={{ fontFamily: "WorkSans_700Bold" }}
+            style={{
+              fontFamily: "WorkSans_700Bold",
+              color: isExpanded ? "#FFFFFF00" : "#FFFFFF",
+            }}
           >
             EXPAND
           </Text>
@@ -350,9 +374,7 @@ export default function Page() {
       }
     };
 
-    if (chapterData == null) {
-      fetchData();
-    }
+    fetchData();
   }, [link]);
 
   if (chapterData == null) {
