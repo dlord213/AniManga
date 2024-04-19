@@ -1,0 +1,16 @@
+export const colors = [
+  { color: "red", hex: "#EF4444" },
+  { color: "orange", hex: "#F97316" },
+  { color: "amber", hex: "#F59E0B" },
+  { color: "yellow", hex: "#EAB308" },
+  { color: "lime", hex: "#84CC16" },
+  { color: "green", hex: "#22C55E" },
+  { color: "emerald", hex: "#10B981" },
+  { color: "sky", hex: "#0EA5E9" },
+  { color: "blue", hex: "#3B82F6" },
+  { color: "indigo", hex: "#6366F1" },
+  { color: "purple", hex: "#A855F7" },
+  { color: "pink", hex: "#EC4899" },
+  { color: "rose", hex: "#F43F5E" },
+  { color: "slate", hex: "#64748B" },
+];

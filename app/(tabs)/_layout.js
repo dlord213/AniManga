@@ -160,6 +160,16 @@ export default function TabLayout() {
               },
             }}
           />
+          <Tabs.Screen
+            name="manga_view_test/index"
+            options={{
+              href: null,
+              headerShown: false,
+              tabBarStyle: {
+                display: segments[1] === "manga_view_test" ? "none" : "flex",
+              },
+            }}
+          />
         </Tabs>
         <StatusBar
           style={colorScheme === "dark" ? "light" : "dark"}

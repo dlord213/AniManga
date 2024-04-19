@@ -3,54 +3,16 @@ import React, { useContext, useEffect, useState, useCallback } from "react";
 import {
   ActivityIndicator,
   FlatList,
-  ImageBackground,
   Text,
-  TextInput,
   ToastAndroid,
   View,
   Pressable,
 } from "react-native";
 import { AccentColorContext } from "../context/accent_color_context";
 import { useColorScheme } from "nativewind";
-import { FontAwesome } from "@expo/vector-icons";
 import LibraryStorage from "../library_storage/library_storage";
 import { Link } from "expo-router";
-
-function MangaComponent(props) {
-  return (
-    <Link
-      href={{
-        pathname: "/manga_about",
-        params: { link: props.mangaLink },
-      }}
-      asChild
-    >
-      <Pressable className="flex-1">
-        <ImageBackground
-          src={props.mangaImgSrc}
-          resizeMode="cover"
-          className="flex flex-1 justify-end h-[240px]"
-          imageStyle={{ borderRadius: 16 }}
-        >
-          <View
-            style={{
-              backgroundColor: "#0F172AAA",
-              borderRadius: 16,
-            }}
-            className="p-4"
-          >
-            <Text
-              className="text-white"
-              style={{ fontFamily: "WorkSans_700Bold" }}
-            >
-              {props.mangaTitle}
-            </Text>
-          </View>
-        </ImageBackground>
-      </Pressable>
-    </Link>
-  );
-}
+import { MangaComponent } from "./components/MangaComponent";
 
 export default function Page() {
   const [isLibraryLoaded, setIsLibraryLoaded] = useState(false);

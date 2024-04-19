@@ -1,71 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  ImageBackground,
-  Pressable,
-  Text,
-  ToastAndroid,
-  View,
-} from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { AccentColorContext } from "../context/accent_color_context";
 import { useColorScheme } from "nativewind";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { Link } from "expo-router";
-import { AntDesign } from "@expo/vector-icons";
 import { HottestMangaPageContext } from "../context/hottest_manga_page_context";
-
-function MangaComponent(props) {
-  return (
-    <Link
-      href={{
-        pathname: "/manga_about",
-        params: { link: props.mangaLink },
-      }}
-      asChild
-    >
-      <Pressable className="flex-1 overflow-ellipsis">
-        <ImageBackground
-          src={props.mangaImgSrc}
-          resizeMode="cover"
-          className="flex flex-1 justify-end h-[240px]"
-          imageStyle={{ borderRadius: 16 }}
-        >
-          <View
-            style={{
-              backgroundColor: "#0F172AAA",
-              borderRadius: 16,
-            }}
-            className="p-4"
-          >
-            <Text
-              className="text-white text-xl"
-              style={{ fontFamily: "WorkSans_700Bold" }}
-            >
-              {props.mangaTitle}
-            </Text>
-            <View className="flex flex-row items-center gap-2">
-              <AntDesign name="clockcircle" size={16} color="white" />
-              <Text
-                style={{ fontFamily: "WorkSans_400Regular" }}
-                className="text-white flex-1"
-              >
-                {props.mangaLatestChapter}
-              </Text>
-            </View>
-          </View>
-        </ImageBackground>
-      </Pressable>
-    </Link>
-  );
-}
+import { MangaComponent } from "./components/MangaComponent";
 
 export default function Page() {
   const colorContext = useContext(AccentColorContext);
   const pageContext = useContext(HottestMangaPageContext);
-
   const [data, setData] = useState(null);
   const [isDataFetched, setIsDataFetched] = useState(false);
   const [previousPageContext, setPreviousPageContext] = useState();
