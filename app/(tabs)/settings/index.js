@@ -50,7 +50,7 @@ function SwitchComponent(props) {
   const { colorScheme } = useColorScheme();
 
   return (
-    <View className="flex flex-row items-center justify-between bg-gray-200 px-2 rounded-lg dark:bg-gray-900">
+    <View className="flex flex-row items-center justify-between bg-gray-200 p-2 rounded-lg dark:bg-gray-900">
       <Text
         style={{ fontFamily: "WorkSans_400Regular" }}
         className="text-[#484848] dark:text-white"

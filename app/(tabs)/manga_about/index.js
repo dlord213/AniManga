@@ -273,7 +273,7 @@ function ChapterComponent(props) {
   return (
     <Link
       href={{
-        pathname: "manga_view",
+        pathname: "manga_view/",
         params: { link: props.link },
       }}
       asChild
@@ -402,10 +402,9 @@ export default function Page() {
             <ChapterComponent
               title={item.title}
               time={item.time}
-              link={item.link}
+              link={item.href}
             />
           )}
-          className="mb-16"
           maxToRenderPerBatch={8}
           key={data[0].mangaTitle}
           showsVerticalScrollIndicator={false}

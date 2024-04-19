@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import { Tabs, useSegments } from "expo-router";
 import { useColorScheme } from "nativewind";
 import { StatusBar } from "expo-status-bar";
 import { AccentColorContext } from "./context/accent_color_context";
@@ -11,6 +11,7 @@ import { HottestMangaPageContext } from "./context/hottest_manga_page_context";
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
+  const segments = useSegments();
 
   const [currentAccentColor, setAccentColor] = useState({
     hex: "#EF4444",
@@ -49,7 +50,9 @@ export default function TabLayout() {
               colorScheme === "dark" ? "white" : currentAccentColor.hex,
             headerTitleStyle: { fontFamily: "WorkSans_900Black" },
             headerShadowVisible: false,
+            tabBarHideOnKeyboard: true,
           }}
+          detachInactiveScreens={true}
         >
           <Tabs.Screen
             name="library/index"
@@ -137,6 +140,9 @@ export default function TabLayout() {
             options={{
               href: null,
               headerShown: false,
+              tabBarStyle: {
+                display: segments[1] === "manga_about" ? "none" : "flex",
+              },
             }}
           />
           <Tabs.Screen name="modal/index" options={{ href: null }} />
@@ -144,8 +150,21 @@ export default function TabLayout() {
             name="library_storage/library_storage"
             options={{ href: null }}
           />
+          <Tabs.Screen
+            name="manga_view/index"
+            options={{
+              href: null,
+              headerShown: false,
+              tabBarStyle: {
+                display: segments[1] === "manga_view" ? "none" : "flex",
+              },
+            }}
+          />
         </Tabs>
-        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+        <StatusBar
+          style={colorScheme === "dark" ? "light" : "dark"}
+          hidden={segments[1] === "manga_view" ? true : false}
+        />
       </AccentColorContext.Provider>
     </HottestMangaPageContext.Provider>
   );
